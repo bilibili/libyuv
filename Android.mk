@@ -44,6 +44,13 @@ ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
         source/rotate_neon.cc.neon     \
         source/row_neon.cc.neon        \
         source/scale_neon.cc.neon
+else ifeq ($(TARGET_ARCH_ABI),arm64-v8a)
+	LOCAL_CFLAGS += -DLIBYUV_NEON
+	LOCAL_SRC_FILES += \
+        source/compare_neon64.cc    \
+        source/rotate_neon64.cc     \
+        source/row_neon64.cc        \
+        source/scale_neon64.cc
 endif
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
